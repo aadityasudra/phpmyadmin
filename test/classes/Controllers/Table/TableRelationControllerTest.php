@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Tests for libraries/controllers/TableRelationController.php
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Controllers\Table;
 
 use PhpMyAdmin\Di\Container;
@@ -241,7 +243,7 @@ class TableRelationControllerTest extends \PMATestCase
  *
  * @package PhpMyAdmin-test
  */
-Class DataBasePMAMockForTblRelation
+class DataBasePMAMockForTblRelation
 {
     public $databases;
 }
@@ -251,7 +253,7 @@ Class DataBasePMAMockForTblRelation
  *
  * @package PhpMyAdmin-test
  */
-Class DataBaseMockForTblRelation
+class DataBaseMockForTblRelation
 {
     /**
      * mock function to return table is existed

@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\Plugins\Auth\AuthenticationCookie class
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Plugins\Auth;
 
 use PhpMyAdmin\Config;
@@ -295,7 +297,7 @@ class AuthenticationCookieTest extends \PMATestCase
         $GLOBALS['cfg']['CaptchaLoginPublicKey'] = 'testpubkey';
         $GLOBALS['server'] = 0;
 
-        $GLOBALS['error_handler'] = new ErrorHandler;
+        $GLOBALS['error_handler'] = new ErrorHandler();
 
         ob_start();
         $this->object->auth();
@@ -1095,9 +1097,9 @@ class AuthenticationCookieTest extends \PMATestCase
         $method->setAccessible(true);
 
         $encryptedCookie = $this->object->cookieEncrypt(
-                                json_encode($payload),
-                                $method->invoke($this->object, null)
-                            );
+            json_encode($payload),
+            $method->invoke($this->object, null)
+        );
         $this->assertEquals(
             $_COOKIE['pmaAuth-' . $GLOBALS['server']],
             $encryptedCookie

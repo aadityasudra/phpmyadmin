@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\CentralColumns
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests;
 
 use PhpMyAdmin\CentralColumns;
@@ -106,9 +108,9 @@ class CentralColumnsTest extends TestCase
             ->will(
                 $this->returnValue(
                     array(
-                        "id"=>array("Type"=>"integer", "Null"=>"NO"),
-                        "col1"=>array("Type"=>'varchar(100)', "Null"=>"YES"),
-                        "col2"=>array("Type"=>'DATETIME', "Null"=>"NO")
+                        "id" => array("Type" => "integer", "Null" => "NO"),
+                        "col1" => array("Type" => 'varchar(100)', "Null" => "YES"),
+                        "col2" => array("Type" => 'DATETIME', "Null" => "NO")
                     )
                 )
             );
@@ -181,7 +183,9 @@ class CentralColumnsTest extends TestCase
             ->with(
                 "SELECT count(db_name) FROM `pma_central_columns` "
                 . "WHERE db_name = 'phpmyadmin';",
-                null, null, $GLOBALS['controllink']
+                null,
+                null,
+                $GLOBALS['controllink']
             )
             ->will(
                 $this->returnValue(array(3))
@@ -224,7 +228,9 @@ class CentralColumnsTest extends TestCase
             ->with(
                 "SELECT col_name FROM `pma_central_columns` "
                 . "WHERE db_name = 'PMA_db' AND col_name IN ('col1');",
-                null, null, $GLOBALS['controllink']
+                null,
+                null,
+                $GLOBALS['controllink']
             )
             ->will(
                 $this->returnValue(array('col1'))
@@ -247,11 +253,13 @@ class CentralColumnsTest extends TestCase
 
         // when column does not exist in the central column list
         $this->assertInstanceOf(
-            'PhpMyAdmin\Message', CentralColumns::deleteColumnsFromList(array('column1'), false)
+            'PhpMyAdmin\Message',
+            CentralColumns::deleteColumnsFromList(array('column1'), false)
         );
 
         $this->assertInstanceOf(
-            'PhpMyAdmin\Message', CentralColumns::deleteColumnsFromList(array('PMA_table'))
+            'PhpMyAdmin\Message',
+            CentralColumns::deleteColumnsFromList(array('PMA_table'))
         );
     }
 
@@ -292,7 +300,9 @@ class CentralColumnsTest extends TestCase
             ->with(
                 "SELECT col_name FROM `pma_central_columns` "
                 . "WHERE db_name = 'PMA_db' AND col_name IN ('id','col1','col2');",
-                null, null, $GLOBALS['controllink']
+                null,
+                null,
+                $GLOBALS['controllink']
             )
             ->will(
                 $this->returnValue(array('id','col1'))
@@ -318,7 +328,9 @@ class CentralColumnsTest extends TestCase
             ->with(
                 "SELECT * FROM `pma_central_columns` "
                 . "WHERE db_name = 'PMA_db' AND col_name IN ('id','col1','col2');",
-                null, null, $GLOBALS['controllink']
+                null,
+                null,
+                $GLOBALS['controllink']
             )
             ->will(
                 $this->returnValue(array_slice($this->_columnData, 0, 2))
@@ -338,12 +350,30 @@ class CentralColumnsTest extends TestCase
     {
         $this->assertTrue(
             CentralColumns::updateOneColumn(
-                "phpmyadmin", "", "", "", "", "", "", "", "", ""
+                "phpmyadmin",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
             )
         );
         $this->assertTrue(
             CentralColumns::updateOneColumn(
-                "phpmyadmin", "col1", "", "", "", "", "", "", "", ""
+                "phpmyadmin",
+                "col1",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
             )
         );
     }
@@ -382,13 +412,16 @@ class CentralColumnsTest extends TestCase
             ->with(
                 "SELECT * FROM `pma_central_columns` "
                 . "WHERE db_name = 'phpmyadmin' AND col_name IN ('col1','col2');",
-                null, null, $GLOBALS['controllink']
+                null,
+                null,
+                $GLOBALS['controllink']
             )
             ->will(
                 $this->returnValue($this->_columnData)
             );
         $result = CentralColumns::getHtmlForEditingPage(
-            array("col1", "col2"), 'phpmyadmin'
+            array("col1", "col2"),
+            'phpmyadmin'
         );
         $this->assertContains(
             '<form',
@@ -399,18 +432,24 @@ class CentralColumnsTest extends TestCase
         __('Collation'), __('Attributes'), __('Null'), __('A_I')
         );
         $this->assertContains(
-            CentralColumns::getEditTableHeader($header_cells), $result
+            CentralColumns::getEditTableHeader($header_cells),
+            $result
         );
         $list_detail_cols = CentralColumns::findExistingColNames(
-            'phpmyadmin', "'col1','col2'", true
+            'phpmyadmin',
+            "'col1','col2'",
+            true
         );
         $this->assertContains(
             CentralColumns::getHtmlForCentralColumnsEditTableRow(
-                $list_detail_cols[0], 0
-            ), $result
+                $list_detail_cols[0],
+                0
+            ),
+            $result
         );
         $this->assertContains(
-            CentralColumns::getEditTableFooter(), $result
+            CentralColumns::getEditTableFooter(),
+            $result
         );
 
     }
@@ -447,7 +486,10 @@ class CentralColumnsTest extends TestCase
         );
         $this->assertContains(
             Util::pageselector(
-                'pos', 10, 2, 3
+                'pos',
+                10,
+                2,
+                3
             ),
             $result_1
         );
@@ -469,7 +511,9 @@ class CentralColumnsTest extends TestCase
         $this->assertContains(
             '<thead',
             CentralColumns::getTableHeader(
-                'column_heading', __('Click to sort'), 2
+                'column_heading',
+                __('Click to sort'),
+                2
             )
         );
     }
@@ -486,7 +530,9 @@ class CentralColumnsTest extends TestCase
             ->with(
                 "SELECT * FROM `pma_central_columns` "
                 . "WHERE db_name = 'phpmyadmin';",
-                null, null, $GLOBALS['controllink']
+                null,
+                null,
+                $GLOBALS['controllink']
             )
             ->will(
                 $this->returnValue($this->_columnData)
@@ -510,7 +556,9 @@ class CentralColumnsTest extends TestCase
                 "SELECT * FROM `pma_central_columns` "
                 . "WHERE db_name = 'phpmyadmin' AND col_name "
                 . "NOT IN ('id','col1','col2');",
-                null, null, $GLOBALS['controllink']
+                null,
+                null,
+                $GLOBALS['controllink']
             )
             ->will(
                 $this->returnValue($this->_columnData)
@@ -573,7 +621,9 @@ class CentralColumnsTest extends TestCase
             ->with(
                 "SELECT * FROM `pma_central_columns` WHERE db_name = 'phpmyadmin'"
                 . " AND col_name IN ('col1');",
-                null, null, $GLOBALS['controllink']
+                null,
+                null,
+                $GLOBALS['controllink']
             )
             ->will(
                 $this->returnValue(array_slice($this->_columnData, 1, 1))

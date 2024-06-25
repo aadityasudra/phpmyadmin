@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Tests for Config File Management
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Config;
 
 use PhpMyAdmin\Config\ConfigFile;
@@ -105,7 +107,8 @@ class ConfigFileTest extends \PMATestCase
          * Case 1: set default value, key should not be persisted
          */
         $this->object->set(
-            self::SIMPLE_KEY_WITH_DEFAULT_VALUE, $default_simple_value
+            self::SIMPLE_KEY_WITH_DEFAULT_VALUE,
+            $default_simple_value
         );
         $this->object->set('Servers/1/host', $default_host);
         $this->object->set('Servers/2/host', $default_host);
@@ -342,12 +345,14 @@ class ConfigFileTest extends \PMATestCase
             self::SIMPLE_KEY_WITH_DEFAULT_VALUE
         );
         $this->assertEquals(
-            $default_value, $flat_default_config[self::SIMPLE_KEY_WITH_DEFAULT_VALUE]
+            $default_value,
+            $flat_default_config[self::SIMPLE_KEY_WITH_DEFAULT_VALUE]
         );
 
         $localhost_value = $this->object->getDefault('Servers/1/host');
         $this->assertEquals(
-            $localhost_value, $flat_default_config['Servers/1/host']
+            $localhost_value,
+            $flat_default_config['Servers/1/host']
         );
 
         $cfg = array();

@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Tests for Page-related settings
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Config;
 
 use PhpMyAdmin\Config;

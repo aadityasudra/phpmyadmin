@@ -4,6 +4,7 @@
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests;
 
 use PhpMyAdmin\Font;
@@ -226,7 +227,9 @@ class FontTest extends \PMATestCase
         $this->assertEquals(
             6,
             Font::getStringWidth(
-                "a", "arial", "10",
+                "a",
+                "arial",
+                "10",
                 array(array("chars" => "a"))
             )
         );
@@ -236,7 +239,9 @@ class FontTest extends \PMATestCase
         $this->assertEquals(
             6,
             Font::getStringWidth(
-                "a", "arial", "10",
+                "a",
+                "arial",
+                "10",
                 array(array("modifier" => 0.61))
             )
         );
@@ -246,7 +251,9 @@ class FontTest extends \PMATestCase
         $this->assertEquals(
             6,
             Font::getStringWidth(
-                "a", "arial", "10",
+                "a",
+                "arial",
+                "10",
                 array(array("chars" => "a", "modifier" => 0.61))
             )
         );
@@ -255,7 +262,9 @@ class FontTest extends \PMATestCase
         $this->assertEquals(
             7,
             Font::getStringWidth(
-                "a", "arial", "10",
+                "a",
+                "arial",
+                "10",
                 array(array("chars" => array("a"), "modifier" => 0.61))
             )
         );

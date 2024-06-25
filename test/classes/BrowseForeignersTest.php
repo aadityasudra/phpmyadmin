@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Tests for PhpMyAdmin\BrowseForeigners
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests;
 
 use PhpMyAdmin\BrowseForeigners;
@@ -167,8 +169,11 @@ class BrowseForeignersTest extends TestCase
         $description = 'foo';
         $title = '';
         $result = BrowseForeigners::getHtmlForColumnElement(
-            $cssClass, $isSelected, $keyname,
-            $description, $title
+            $cssClass,
+            $isSelected,
+            $keyname,
+            $description,
+            $title
         );
 
         $this->assertContains(
@@ -187,8 +192,11 @@ class BrowseForeignersTest extends TestCase
         $keyname = 'bar';
         $title = 'foo';
         $result = BrowseForeigners::getHtmlForColumnElement(
-            $cssClass, $isSelected, $keyname,
-            $description, $title
+            $cssClass,
+            $isSelected,
+            $keyname,
+            $description,
+            $title
         );
 
         $this->assertContains(
@@ -248,7 +256,12 @@ class BrowseForeignersTest extends TestCase
         $_REQUEST['rownumber'] = 1;
         $_REQUEST['foreign_filter'] = '5';
         $result = BrowseForeigners::getHtmlForRelationalFieldSelection(
-            $db, $table, $field, $foreignData, $fieldkey, $current_value
+            $db,
+            $table,
+            $field,
+            $foreignData,
+            $fieldkey,
+            $current_value
         );
 
         $this->assertContains(
@@ -315,7 +328,12 @@ class BrowseForeignersTest extends TestCase
         $foreignData['the_total'] = 5;
         $GLOBALS['cfg']['ShowAll'] = false;
         $result = BrowseForeigners::getHtmlForRelationalFieldSelection(
-            $db, $table, $field, $foreignData, $fieldkey, $current_value
+            $db,
+            $table,
+            $field,
+            $foreignData,
+            $fieldkey,
+            $current_value
         );
 
         $this->assertContains(

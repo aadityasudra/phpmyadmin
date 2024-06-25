@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for FormDisplay class in config folder
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Config;
 
 use PhpMyAdmin\Config;

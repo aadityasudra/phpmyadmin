@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for Form class in config folder
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Config;
 
 use PhpMyAdmin\Config;
@@ -37,7 +39,10 @@ class FormTest extends \PMATestCase
         $GLOBALS['PMA_Config'] = new Config();
         $GLOBALS['server'] = 0;
         $this->object = new Form(
-            'pma_form_name', array('pma_form1','pma_form2'), new ConfigFile(), 1
+            'pma_form_name',
+            array('pma_form1','pma_form2'),
+            new ConfigFile(),
+            1
         );
     }
 

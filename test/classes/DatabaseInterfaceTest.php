@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Test for faked database access
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests;
 
 use PhpMyAdmin\DatabaseInterface;
@@ -114,7 +116,8 @@ class DatabaseInterfaceTest extends \PMATestCase
         );
 
         $column_map = $dbi->getColumnMapFromSql(
-            $sql_query, $view_columns
+            $sql_query,
+            $view_columns
         );
 
         $this->assertEquals(

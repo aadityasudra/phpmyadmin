@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Test for PhpMyAdmin\Import
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests;
 
 use PhpMyAdmin\Import;
@@ -67,14 +69,14 @@ class ImportTest extends TestCase
         $this->assertTrue(Import::checkTimeout());
 
         //Reinit values.
-        $timestamp = time()-15;
+        $timestamp = time() - 15;
         $maximum_time = 30;
         $timeout_passed = false;
 
         $this->assertFalse(Import::checkTimeout());
 
         //Reinit values.
-        $timestamp = time()-60;
+        $timestamp = time() - 60;
         $maximum_time = 30;
         $timeout_passed = false;
 
