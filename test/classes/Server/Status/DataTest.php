@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Test for PhpMyAdmin\Server\Status\Data class
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Server\Status;
 
 use PhpMyAdmin\Core;
@@ -56,7 +58,7 @@ class DataTest extends \PMATestCase
             "Connections" => 2,
         );
 
-        $server_variables= array(
+        $server_variables = array(
             "auto_increment_increment" => "1",
             "auto_increment_offset" => "1",
             "automatic_sp_privileges" => "ON",

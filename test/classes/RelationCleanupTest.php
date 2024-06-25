@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\RelationCleanup
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests;
 
 use PhpMyAdmin\DatabaseInterface;
@@ -127,11 +129,11 @@ class RelationCleanupTest extends TestCase
         $cfgRelation = Relation::checkRelationsParam();
 
         $is_defined_column_info
-            = isset($cfgRelation['column_info'])? $cfgRelation['column_info'] : null;
+            = isset($cfgRelation['column_info']) ? $cfgRelation['column_info'] : null;
         $is_defined_table_info
-            = isset($cfgRelation['table_info'])? $cfgRelation['table_info'] : null;
+            = isset($cfgRelation['table_info']) ? $cfgRelation['table_info'] : null;
         $is_defined_relation
-            = isset($cfgRelation['relation'])? $cfgRelation['relation'] : null;
+            = isset($cfgRelation['relation']) ? $cfgRelation['relation'] : null;
 
         $this->assertEquals(
             null,
@@ -185,11 +187,11 @@ class RelationCleanupTest extends TestCase
         $cfgRelation = Relation::checkRelationsParam();
 
         $is_defined_column_info
-            = isset($cfgRelation['column_info'])? $cfgRelation['column_info'] : null;
+            = isset($cfgRelation['column_info']) ? $cfgRelation['column_info'] : null;
         $is_defined_table_info
-            = isset($cfgRelation['table_info'])? $cfgRelation['table_info'] : null;
+            = isset($cfgRelation['table_info']) ? $cfgRelation['table_info'] : null;
         $is_defined_relation
-            = isset($cfgRelation['relation'])? $cfgRelation['relation'] : null;
+            = isset($cfgRelation['relation']) ? $cfgRelation['relation'] : null;
         $is_defined_table_coords
             = isset($cfgRelation['table_coords'])
             ? $cfgRelation['table_coords']
@@ -257,11 +259,11 @@ class RelationCleanupTest extends TestCase
         $cfgRelation = Relation::checkRelationsParam();
 
         $is_defined_column_info
-            = isset($cfgRelation['column_info'])? $cfgRelation['column_info'] : null;
+            = isset($cfgRelation['column_info']) ? $cfgRelation['column_info'] : null;
         $is_defined_table_info
-            = isset($cfgRelation['table_info'])? $cfgRelation['table_info'] : null;
+            = isset($cfgRelation['table_info']) ? $cfgRelation['table_info'] : null;
         $is_defined_relation
-            = isset($cfgRelation['relation'])? $cfgRelation['relation'] : null;
+            = isset($cfgRelation['relation']) ? $cfgRelation['relation'] : null;
         $is_defined_table_coords
             = isset($cfgRelation['table_coords'])
             ? $cfgRelation['table_coords']
@@ -307,41 +309,41 @@ class DBI_PMA_Relation_Cleanup extends DatabaseInterface
      */
     public function __construct()
     {
-         $this->index = 0;
-         $this->assocIndex = 0;
-         $this->totalNum = 2;
-         $this->values = array(
-             'bookmark',
-             'relation',
-             'table_info',
-             'table_coords',
-             'column_info',
-             'pdf_pages',
-             'history',
-             'recent',
-             'table_uiprefs',
-             'tracking',
-             'userconfig',
-             'users',
-             'usergroups',
-             'navigationhiding',
-         );
-         $this->indexs = array(
-             'bookmark' => 0,
-             'relation' => 1,
-             'table_info' => 2,
-             'table_coords' => 3,
-             'column_info' => 4,
-             'pdf_pages' => 5,
-             'history' => 6,
-             'recent' => 7,
-             'table_uiprefs' => 8,
-             'tracking' => 9,
-             'userconfig' => 10,
-             'users' => 11,
-             'usergroups' => 12,
-             'navigationhiding' => 13,
-         );
+        $this->index = 0;
+        $this->assocIndex = 0;
+        $this->totalNum = 2;
+        $this->values = array(
+            'bookmark',
+            'relation',
+            'table_info',
+            'table_coords',
+            'column_info',
+            'pdf_pages',
+            'history',
+            'recent',
+            'table_uiprefs',
+            'tracking',
+            'userconfig',
+            'users',
+            'usergroups',
+            'navigationhiding',
+        );
+        $this->indexs = array(
+            'bookmark' => 0,
+            'relation' => 1,
+            'table_info' => 2,
+            'table_coords' => 3,
+            'column_info' => 4,
+            'pdf_pages' => 5,
+            'history' => 6,
+            'recent' => 7,
+            'table_uiprefs' => 8,
+            'tracking' => 9,
+            'userconfig' => 10,
+            'users' => 11,
+            'usergroups' => 12,
+            'navigationhiding' => 13,
+        );
     }
 
     /**
@@ -414,7 +416,10 @@ class DBI_PMA_Relation_Cleanup extends DatabaseInterface
      * @return mixed
      */
     public function tryQuery(
-        $query, $link = null, $options = 0, $cache_affected_rows = true
+        $query,
+        $link = null,
+        $options = 0,
+        $cache_affected_rows = true
     ) {
         return true;
     }

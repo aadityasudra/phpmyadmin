@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\Server\Privileges
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Server;
 
 use PhpMyAdmin\Core;
@@ -176,8 +178,7 @@ class PrivilegesTest extends TestCase
         //pre variable have been defined
         $_REQUEST['pred_tablename'] = "PMA_pred__tablename";
         $_REQUEST['pred_dbname'] = array("PMA_pred_dbname");
-        list(
-            ,, $dbname, $tablename, $routinename,
+        list(, , $dbname, $tablename, $routinename,
             $db_and_table, $dbname_is_wildcard
         ) = Privileges::getDataForDBInfo();
         $this->assertEquals(
@@ -332,8 +333,13 @@ class PrivilegesTest extends TestCase
         $name_for_current = 'name_for_current';
 
         $html = Privileges::getHtmlForColumnPrivileges(
-            $columns, $row, $name_for_select,
-            $priv_for_header, $name, $name_for_dfn, $name_for_current
+            $columns,
+            $row,
+            $name_for_select,
+            $priv_for_header,
+            $name,
+            $name_for_dfn,
+            $name_for_current
         );
         //$name
         $this->assertContains(
@@ -682,7 +688,10 @@ class PrivilegesTest extends TestCase
 
         //$db == '*'
         $ret = Privileges::getSqlQueryForDisplayPrivTable(
-            $db, $table, $username, $hostname
+            $db,
+            $table,
+            $username,
+            $hostname
         );
         $sql = "SELECT * FROM `mysql`.`user`"
             . " WHERE `User` = '" . $GLOBALS['dbi']->escapeString($username) . "'"
@@ -696,7 +705,10 @@ class PrivilegesTest extends TestCase
         $db = "pma_db";
         $table = "*";
         $ret = Privileges::getSqlQueryForDisplayPrivTable(
-            $db, $table, $username, $hostname
+            $db,
+            $table,
+            $username,
+            $hostname
         );
         $sql = "SELECT * FROM `mysql`.`db`"
             . " WHERE `User` = '" . $GLOBALS['dbi']->escapeString($username) . "'"
@@ -712,7 +724,10 @@ class PrivilegesTest extends TestCase
         $db = "pma_db";
         $table = "pma_table";
         $ret = Privileges::getSqlQueryForDisplayPrivTable(
-            $db, $table, $username, $hostname
+            $db,
+            $table,
+            $username,
+            $hostname
         );
         $sql = "SELECT `Table_priv`"
             . " FROM `mysql`.`tables_priv`"
@@ -729,7 +744,10 @@ class PrivilegesTest extends TestCase
         $db = "db' AND";
         $table = "pma_table";
         $ret = Privileges::getSqlQueryForDisplayPrivTable(
-            $db, $table, $username, $hostname
+            $db,
+            $table,
+            $username,
+            $hostname
         );
         $this->assertEquals(
             "SELECT `Table_priv` FROM `mysql`.`tables_priv` "
@@ -834,7 +852,7 @@ class PrivilegesTest extends TestCase
         $_REQUEST['authentication_plugin'] = 'mysql_native_password';
 
         list(
-            $ret_message,,, $sql_query,
+            $ret_message, , , $sql_query,
             $_add_user_error
         ) = Privileges::addUser(
             $dbname,
@@ -881,7 +899,7 @@ class PrivilegesTest extends TestCase
         $_REQUEST['authentication_plugin'] = 'mysql_native_password';
 
         list(
-            $ret_message,,, $sql_query,
+            $ret_message, , , $sql_query,
             $_add_user_error
         ) = Privileges::addUser(
             $dbname,
@@ -922,7 +940,9 @@ class PrivilegesTest extends TestCase
         $_REQUEST['authentication_plugin'] = 'mysql_native_password';
 
         $message = Privileges::updatePassword(
-            $err_url, $username, $hostname
+            $err_url,
+            $username,
+            $hostname
         );
 
         $this->assertEquals(
@@ -949,9 +969,13 @@ class PrivilegesTest extends TestCase
         $_REQUEST['createdb-3'] = true;
         $_POST['Grant_priv'] = 'Y';
         $_POST['max_questions'] = 1000;
-        list ($message, $sql_query)
+        list($message, $sql_query)
             = Privileges::getMessageAndSqlQueryForPrivilegesRevoke(
-                $dbname, $tablename, $username, $hostname, ''
+                $dbname,
+                $tablename,
+                $username,
+                $hostname,
+                ''
             );
 
         $this->assertEquals(
@@ -985,7 +1009,11 @@ class PrivilegesTest extends TestCase
         $_POST['Grant_priv'] = 'Y';
         $_POST['max_questions'] = 1000;
         list($sql_query, $message) = Privileges::updatePrivileges(
-            $username, $hostname, $tablename, $dbname, ''
+            $username,
+            $hostname,
+            $tablename,
+            $dbname,
+            ''
         );
 
         $this->assertEquals(
@@ -1187,7 +1215,12 @@ class PrivilegesTest extends TestCase
 
         //Test for addUserAndCreateDatabase
         list($sql_query, $message) = Privileges::addUserAndCreateDatabase(
-            false, $real_sql_query, $sql_query, $username, $hostname, $dbname
+            false,
+            $real_sql_query,
+            $sql_query,
+            $username,
+            $hostname,
+            $dbname
         );
 
         //validate 5: $sql_query
@@ -1229,12 +1262,18 @@ class PrivilegesTest extends TestCase
         );
 
         $html = Privileges::getHtmlForTableSpecificPrivileges(
-            $username, $hostname, $db, $table, $columns, $row
+            $username,
+            $hostname,
+            $db,
+            $table,
+            $columns,
+            $row
         );
 
         //validate 1: Privileges::getHtmlForAttachedPrivilegesToTableSpecificColumn
         $item = Privileges::getHtmlForAttachedPrivilegesToTableSpecificColumn(
-            $columns, $row
+            $columns,
+            $row
         );
         $this->assertContains(
             $item,
@@ -1646,9 +1685,9 @@ class PrivilegesTest extends TestCase
         $privMap = array(
             "user1" => array(
                 "hostname1" => array(
-                    array('Type'=>'g', 'Grant_priv'=>'Y'),
-                    array('Type'=>'d', 'Db'=>"dbname", 'Grant_priv'=>'Y'),
-                    array('Type'=>'t', 'Grant_priv'=>'N'),
+                    array('Type' => 'g', 'Grant_priv' => 'Y'),
+                    array('Type' => 'd', 'Db' => "dbname", 'Grant_priv' => 'Y'),
+                    array('Type' => 't', 'Grant_priv' => 'N'),
                 )
             )
         );
@@ -1709,7 +1748,12 @@ class PrivilegesTest extends TestCase
         $tablename = "pma_tablename";
 
         $html = Privileges::getUserLink(
-            'edit', $username, $hostname, $dbname, $tablename, ''
+            'edit',
+            $username,
+            $hostname,
+            $dbname,
+            $tablename,
+            ''
         );
 
         $url_html = Url::getCommon(
@@ -1731,7 +1775,12 @@ class PrivilegesTest extends TestCase
         );
 
         $html = Privileges::getUserLink(
-            'revoke', $username, $hostname, $dbname, $tablename, ''
+            'revoke',
+            $username,
+            $hostname,
+            $dbname,
+            $tablename,
+            ''
         );
 
         $url_html = Url::getCommon(
@@ -1793,7 +1842,10 @@ class PrivilegesTest extends TestCase
 
         //Privileges::getExtraDataForAjaxBehavior
         $extra_data = Privileges::getExtraDataForAjaxBehavior(
-            $password, $sql_query, $hostname, $username
+            $password,
+            $sql_query,
+            $hostname,
+            $username
         );
 
         //user_exists
@@ -1970,7 +2022,8 @@ class PrivilegesTest extends TestCase
         );
         $this->assertContains(
             Util::getScriptNameForOption(
-                $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
+                $GLOBALS['cfg']['DefaultTabDatabase'],
+                'database'
             ),
             $html
         );
@@ -1996,7 +2049,8 @@ class PrivilegesTest extends TestCase
         );
         $this->assertContains(
             Util::getScriptNameForOption(
-                $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                $GLOBALS['cfg']['DefaultTabTable'],
+                'table'
             ),
             $html
         );
@@ -2038,7 +2092,10 @@ class PrivilegesTest extends TestCase
         $GLOBALS['cfgRelation']['menuswork'] = true;
 
         $html = Privileges::getUsersOverview(
-            $result, $db_rights, $pmaThemeImage, $text_dir
+            $result,
+            $db_rights,
+            $pmaThemeImage,
+            $text_dir
         );
 
         //Url::getHiddenInputs
@@ -2120,7 +2177,10 @@ class PrivilegesTest extends TestCase
         $GLOBALS['cfgRelation']['menuswork'] = true;
 
         $html = Privileges::getUsersOverview(
-            $result, $db_rights, $pmaThemeImage, $text_dir
+            $result,
+            $db_rights,
+            $pmaThemeImage,
+            $text_dir
         );
 
         //Url::getCommon
@@ -2225,8 +2285,13 @@ class PrivilegesTest extends TestCase
         $_REQUEST['tablename'] = "tablename";
 
         $html = Privileges::getHtmlHeaderForUserProperties(
-            $dbname_is_wildcard, $url_dbname, $dbname,
-            $username, $hostname, $tablename, 'table'
+            $dbname_is_wildcard,
+            $url_dbname,
+            $dbname,
+            $username,
+            $hostname,
+            $tablename,
+            'table'
         );
 
         //title
@@ -2315,7 +2380,12 @@ class PrivilegesTest extends TestCase
     public function testPMAGetHtmlForUserProperties()
     {
         $actual = Privileges::getHtmlForUserProperties(
-            false, 'db', 'user', 'host', 'db', 'table'
+            false,
+            'db',
+            'user',
+            'host',
+            'db',
+            'table'
         );
         $this->assertContains('addUsersForm', $actual);
         $this->assertContains('SELECT', $actual);
@@ -2339,7 +2409,8 @@ class PrivilegesTest extends TestCase
     {
         $actual = Privileges::getHtmlForUserOverview('theme', '');
         $this->assertContains(
-            'Note: MySQL privilege names are expressed in English.', $actual
+            'Note: MySQL privilege names are expressed in English.',
+            $actual
         );
         $this->assertContains(
             'Note: phpMyAdmin gets the users’ privileges directly '
@@ -2481,7 +2552,7 @@ class PrivilegesTest extends TestCase
 
         $plugins = array(
             array(
-                'PLUGIN_NAME'=>'mysql_native_password',
+                'PLUGIN_NAME' => 'mysql_native_password',
                 'PLUGIN_DESCRIPTION' => 'Native MySQL authentication'
             ),
             array(
@@ -2493,8 +2564,12 @@ class PrivilegesTest extends TestCase
             ->method('fetchAssoc')
             ->will(
                 $this->onConsecutiveCalls(
-                    $plugins[0], $plugins[1], null, /* For Assertion 1 */
-                    $plugins[0], $plugins[1], null  /* For Assertion 2 */
+                    $plugins[0],
+                    $plugins[1],
+                    null, /* For Assertion 1 */
+                    $plugins[0],
+                    $plugins[1],
+                    null  /* For Assertion 2 */
                 )
             );
         $GLOBALS['dbi'] = $dbi;
@@ -2602,7 +2677,8 @@ class PrivilegesTest extends TestCase
         $this->assertArrayHasKey(1, $actual);
         $this->assertEquals('', $actual[0]);
         $this->assertEquals(
-            'No users selected for deleting!', $actual[1]->getMessage()
+            'No users selected for deleting!',
+            $actual[1]->getMessage()
         );
 
         // Test case 2 : all successful queries
