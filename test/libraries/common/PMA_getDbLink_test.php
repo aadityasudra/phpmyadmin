@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Test for PMA_getDbLink_test from Util.php
@@ -55,7 +56,8 @@ class PMA_GetDbLink_Test extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             '<a href="'
             . PhpMyAdmin\Util::getScriptNameForOption(
-                $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
+                $GLOBALS['cfg']['DefaultTabDatabase'],
+                'database'
             )
             . '?db=' . $database
             . '&amp;server=99&amp;lang=en" '
@@ -77,7 +79,8 @@ class PMA_GetDbLink_Test extends PHPUnit_Framework_TestCase
         $database = 'test_database';
         $this->assertEquals(
             '<a href="' . PhpMyAdmin\Util::getScriptNameForOption(
-                $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
+                $GLOBALS['cfg']['DefaultTabDatabase'],
+                'database'
             )
             . '?db=' . $database
             . '&amp;server=99&amp;lang=en" title="Jump to database “'
@@ -99,7 +102,8 @@ class PMA_GetDbLink_Test extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             '<a href="'
             . PhpMyAdmin\Util::getScriptNameForOption(
-                $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
+                $GLOBALS['cfg']['DefaultTabDatabase'],
+                'database'
             )
             . '?db='
             . htmlspecialchars(urlencode($database))

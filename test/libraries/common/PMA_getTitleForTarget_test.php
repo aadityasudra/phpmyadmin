@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  ** Test for PhpMyAdmin\Util::getTitleForTarget from common.lib
@@ -53,7 +54,8 @@ class PMA_GetTitleForTarget_Test extends PHPUnit_Framework_TestCase
     public function testGetTitleForTarget($target, $result)
     {
         $this->assertEquals(
-            $result, PhpMyAdmin\Util::getTitleForTarget($target)
+            $result,
+            PhpMyAdmin\Util::getTitleForTarget($target)
         );
     }
 

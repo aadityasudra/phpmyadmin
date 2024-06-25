@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  ** Test for PhpMyAdmin\Util::getFormattedMaximumUploadSize from Util.php
@@ -20,7 +21,6 @@
  */
 class PMA_GetFormattedMaximumUploadSize_Test extends PHPUnit_Framework_TestCase
 {
-
     /**
      * Data provider for test
      *

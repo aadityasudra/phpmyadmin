@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  ** Test for PhpMyAdmin\Util::getDivForSliderEffect from Util.php
@@ -74,7 +75,7 @@ class PMA_GetDivForSliderEffectTest extends PHPUnit_Framework_TestCase
 
         $this->assertXmlStringEqualsXmlString(
             "<root>" . PhpMyAdmin\Util::getDivForSliderEffect($id, $message) . "</div></root>",
-             "<root><div id=\"$id\">\n</div></root>"
+            "<root><div id=\"$id\">\n</div></root>"
         );
     }
 }

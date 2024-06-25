@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  ** Test for PhpMyAdmin\Util::getRadioFields from Util.php
@@ -44,7 +45,7 @@ class PMA_GetRadioFieldsTest extends PHPUnit_Framework_TestCase
     public function testGetRadioFields()
     {
         $name = "test_display_radio";
-        $choices = array('value_1'=>'choice_1', 'value_2'=>'choice_2');
+        $choices = array('value_1' => 'choice_1', 'value_2' => 'choice_2');
 
         $out = "";
         foreach ($choices as $choice_value => $choice_label) {
@@ -73,7 +74,7 @@ class PMA_GetRadioFieldsTest extends PHPUnit_Framework_TestCase
     public function testGetRadioFieldsWithChecked()
     {
         $name = "test_display_radio";
-        $choices = array('value_1'=>'choice_1', 'value_2'=>'choice_2');
+        $choices = array('value_1' => 'choice_1', 'value_2' => 'choice_2');
         $checked_choice = "value_2";
 
         $out = "";
@@ -94,7 +95,9 @@ class PMA_GetRadioFieldsTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             PhpMyAdmin\Util::getRadioFields(
-                $name, $choices, $checked_choice
+                $name,
+                $choices,
+                $checked_choice
             ),
             $out
         );
@@ -108,7 +111,7 @@ class PMA_GetRadioFieldsTest extends PHPUnit_Framework_TestCase
     public function testGetRadioFieldsWithCheckedWithClass()
     {
         $name = "test_display_radio";
-        $choices = array('value_1'=>'choice_1', 'value_2'=>'choice_2');
+        $choices = array('value_1' => 'choice_1', 'value_2' => 'choice_2');
         $checked_choice = "value_2";
         $class = "test_class";
 
@@ -134,7 +137,12 @@ class PMA_GetRadioFieldsTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             PhpMyAdmin\Util::getRadioFields(
-                $name, $choices, $checked_choice, true, false, $class
+                $name,
+                $choices,
+                $checked_choice,
+                true,
+                false,
+                $class
             ),
             $out
         );
@@ -148,7 +156,7 @@ class PMA_GetRadioFieldsTest extends PHPUnit_Framework_TestCase
     public function testGetRadioFieldsWithoutBR()
     {
         $name = "test_display_radio";
-        $choices = array('value_1'=>'choice_1', 'value&_&lt;2&gt;'=>'choice_2');
+        $choices = array('value_1' => 'choice_1', 'value&_&lt;2&gt;' => 'choice_2');
         $checked_choice = "choice_2";
 
         $out = "";
@@ -167,7 +175,10 @@ class PMA_GetRadioFieldsTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             PhpMyAdmin\Util::getRadioFields(
-                $name, $choices, $checked_choice, false
+                $name,
+                $choices,
+                $checked_choice,
+                false
             ),
             $out
         );
@@ -181,7 +192,7 @@ class PMA_GetRadioFieldsTest extends PHPUnit_Framework_TestCase
     public function testGetRadioFieldsEscapeLabelEscapeLabel()
     {
         $name = "test_display_radio";
-        $choices = array('value_1'=>'choice_1', 'value_&2'=>'choice&_&lt;2&gt;');
+        $choices = array('value_1' => 'choice_1', 'value_&2' => 'choice&_&lt;2&gt;');
         $checked_choice = "value_2";
 
         $out = "";
@@ -202,7 +213,11 @@ class PMA_GetRadioFieldsTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             PhpMyAdmin\Util::getRadioFields(
-                $name, $choices, $checked_choice, true, true
+                $name,
+                $choices,
+                $checked_choice,
+                true,
+                true
             ),
             $out
         );
@@ -216,7 +231,7 @@ class PMA_GetRadioFieldsTest extends PHPUnit_Framework_TestCase
     public function testGetRadioFieldsEscapeLabelNotEscapeLabel()
     {
         $name = "test_display_radio";
-        $choices = array('value_1'=>'choice_1', 'value_&2'=>'choice&_&lt;2&gt;');
+        $choices = array('value_1' => 'choice_1', 'value_&2' => 'choice&_&lt;2&gt;');
         $checked_choice = "value_2";
 
         $out = "";
@@ -237,7 +252,11 @@ class PMA_GetRadioFieldsTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             PhpMyAdmin\Util::getRadioFields(
-                $name, $choices, $checked_choice, true, false
+                $name,
+                $choices,
+                $checked_choice,
+                true,
+                false
             ),
             $out
         );
@@ -251,7 +270,7 @@ class PMA_GetRadioFieldsTest extends PHPUnit_Framework_TestCase
     public function testGetRadioFieldsEscapeLabelEscapeLabelWithClass()
     {
         $name = "test_display_radio";
-        $choices = array('value_1'=>'choice_1', 'value_&2'=>'choice&_&lt;2&gt;');
+        $choices = array('value_1' => 'choice_1', 'value_&2' => 'choice&_&lt;2&gt;');
         $checked_choice = "value_2";
         $class = "test_class";
 
@@ -277,7 +296,12 @@ class PMA_GetRadioFieldsTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             PhpMyAdmin\Util::getRadioFields(
-                $name, $choices, $checked_choice, true, true, $class
+                $name,
+                $choices,
+                $checked_choice,
+                true,
+                true,
+                $class
             ),
             $out
         );

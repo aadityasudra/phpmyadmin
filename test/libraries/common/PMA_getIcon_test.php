@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  ** Test for PhpMyAdmin\Util::getIcon() from Util.php
@@ -11,9 +12,6 @@
  * Include to test.
  */
 use PhpMyAdmin\Theme;
-
-
-
 
 /**
  ** Test for PhpMyAdmin\Util::getIcon() from Util.php

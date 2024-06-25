@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  ** Test for PhpMyAdmin\Util::getDropdown from Util.php
@@ -38,7 +39,10 @@ class PMA_GetDropdownTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             $result,
             PhpMyAdmin\Util::getDropdown(
-                $name, $choices, $active_choice, $id
+                $name,
+                $choices,
+                $active_choice,
+                $id
             )
         );
     }
@@ -69,7 +73,10 @@ class PMA_GetDropdownTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             $result,
             PhpMyAdmin\Util::getDropdown(
-                $name, $choices, $active_choice, $id
+                $name,
+                $choices,
+                $active_choice,
+                $id
             )
         );
     }
@@ -102,7 +109,10 @@ class PMA_GetDropdownTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             $result,
             PhpMyAdmin\Util::getDropdown(
-                $name, $choices, $active_choice, $id
+                $name,
+                $choices,
+                $active_choice,
+                $id
             )
         );
     }
