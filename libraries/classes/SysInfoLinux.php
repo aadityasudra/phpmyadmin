@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Hold PhpMyAdmin\SysInfoLinux class
  *
  * @package PhpMyAdmin
  */
+
 namespace PhpMyAdmin;
 
 use PhpMyAdmin\SysInfo;
@@ -36,7 +38,7 @@ class SysInfoLinux extends SysInfoBase
             )
         );
 
-        return Array(
+        return array(
             'busy' => $nums[1] + $nums[2] + $nums[3],
             'idle' => intval($nums[4]),
         );

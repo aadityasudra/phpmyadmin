@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Fake database driver for testing purposes
@@ -10,6 +11,7 @@
  * @package    PhpMyAdmin-DBI
  * @subpackage Dummy
  */
+
 namespace PhpMyAdmin\Dbi;
 
 require_once 'libraries/dbi/dbi_dummy.inc.php';
