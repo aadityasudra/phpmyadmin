@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\Plugins\Auth\AuthenticationSignon class
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Plugins\Auth;
 
 use PhpMyAdmin\Config;

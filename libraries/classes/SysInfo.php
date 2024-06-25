@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Library for extracting information about system memory and cpu.
@@ -9,6 +10,7 @@
  *
  * @package PhpMyAdmin-sysinfo
  */
+
 namespace PhpMyAdmin;
 
 use PhpMyAdmin\SysInfoBase;

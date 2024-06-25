@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\Plugins\Export\ExportXml class
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Plugins\Export;
 
 use PhpMyAdmin\DatabaseInterface;
@@ -521,7 +523,11 @@ class ExportXmlTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportData(
-                'db', 'ta<ble', "\n", "example.com", "SELECT"
+                'db',
+                'ta<ble',
+                "\n",
+                "example.com",
+                "SELECT"
             )
         );
         $result = ob_get_clean();

@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\Plugins\Export\ExportTexytext class
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Plugins\Export;
 
 use PhpMyAdmin\DatabaseInterface;
@@ -276,7 +278,11 @@ class ExportTexytextTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportData(
-                'db', 'ta<ble', "\n", "example.com", "SELECT"
+                'db',
+                'ta<ble',
+                "\n",
+                "example.com",
+                "SELECT"
             )
         );
         $result = ob_get_clean();
@@ -458,11 +464,11 @@ class ExportTexytextTest extends \PMATestCase
         );
     }
 
-     /**
-     * Test for PhpMyAdmin\Plugins\Export\ExportTexytext::getTriggers
-     *
-     * @return void
-     */
+    /**
+    * Test for PhpMyAdmin\Plugins\Export\ExportTexytext::getTriggers
+    *
+    * @return void
+    */
     public function testGetTriggers()
     {
         $dbi = $this->getMockBuilder('PhpMyAdmin\DatabaseInterface')
@@ -533,8 +539,16 @@ class ExportTexytextTest extends \PMATestCase
         $this->object->expects($this->at(2))
             ->method('getTableDef')
             ->with(
-                'db', 't&bl', "\n", "example.com",
-                false, false, false, false, true, true
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                false,
+                false,
+                false,
+                false,
+                true,
+                true
             )
             ->will($this->returnValue('dumpText3'));
 
@@ -549,7 +563,12 @@ class ExportTexytextTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 't&bl', "\n", "example.com", "create_table", "test"
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                "create_table",
+                "test"
             )
         );
         $result = ob_get_clean();
@@ -563,7 +582,12 @@ class ExportTexytextTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 't&bl', "\n", "example.com", "triggers", "test"
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                "triggers",
+                "test"
             )
         );
         $result = ob_get_clean();
@@ -577,7 +601,12 @@ class ExportTexytextTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 't&bl', "\n", "example.com", "create_view", "test"
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                "create_view",
+                "test"
             )
         );
         $result = ob_get_clean();
@@ -591,7 +620,12 @@ class ExportTexytextTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 't&bl', "\n", "example.com", "stand_in", "test"
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                "stand_in",
+                "test"
             )
         );
         $result = ob_get_clean();

@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\Plugins\Export\ExportCsv class
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Plugins\Export;
 
 use PhpMyAdmin\DatabaseInterface;
@@ -496,7 +498,11 @@ class ExportCsvTest extends \PMATestCase
         ob_start();
         $this->assertFalse(
             $this->object->exportData(
-                'testDB', 'testTable', "\n", 'example.com', 'test'
+                'testDB',
+                'testTable',
+                "\n",
+                'example.com',
+                'test'
             )
         );
         $result = ob_get_clean();
@@ -543,7 +549,11 @@ class ExportCsvTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportData(
-                'testDB', 'testTable', "\n", 'example.com', 'test'
+                'testDB',
+                'testTable',
+                "\n",
+                'example.com',
+                'test'
             )
         );
         $result = ob_get_clean();
@@ -590,7 +600,11 @@ class ExportCsvTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportData(
-                'testDB', 'testTable', "\n", 'example.com', 'test'
+                'testDB',
+                'testTable',
+                "\n",
+                'example.com',
+                'test'
             )
         );
         $result = ob_get_clean();
@@ -640,7 +654,11 @@ class ExportCsvTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportData(
-                'testDB', 'testTable', "\n", 'example.com', 'test'
+                'testDB',
+                'testTable',
+                "\n",
+                'example.com',
+                'test'
             )
         );
         $result = ob_get_clean();
@@ -689,7 +707,11 @@ class ExportCsvTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportData(
-                'testDB', 'testTable', "\n", 'example.com', 'test'
+                'testDB',
+                'testTable',
+                "\n",
+                'example.com',
+                'test'
             )
         );
         $result = ob_get_clean();
@@ -737,7 +759,11 @@ class ExportCsvTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportData(
-                'testDB', 'testTable', "\n", 'example.com', 'test'
+                'testDB',
+                'testTable',
+                "\n",
+                'example.com',
+                'test'
             )
         );
         $result = ob_get_clean();

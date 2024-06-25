@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\Plugins\Export\ExportCodegen class
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Plugins\Export;
 
 use PhpMyAdmin\Plugins\Export\ExportCodegen;
@@ -254,7 +256,11 @@ class ExportCodegenTest extends \PMATestCase
 
         ob_start();
         $this->object->exportData(
-            'testDB', 'testTable', "\n", 'example.com', 'test'
+            'testDB',
+            'testTable',
+            "\n",
+            'example.com',
+            'test'
         );
         $result = ob_get_clean();
 
@@ -281,7 +287,11 @@ class ExportCodegenTest extends \PMATestCase
         $GLOBALS['codegen_format'] = 4;
 
         $this->object->exportData(
-            'testDB', 'testTable', "\n", 'example.com', 'test'
+            'testDB',
+            'testTable',
+            "\n",
+            'example.com',
+            'test'
         );
 
         $this->expectOutputString(

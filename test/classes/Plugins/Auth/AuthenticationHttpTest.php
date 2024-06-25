@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\Plugins\Auth\AuthenticationHttp class
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Plugins\Auth;
 
 use PhpMyAdmin\Config;
@@ -125,7 +127,9 @@ class AuthenticationHttpTest extends \PMATestCase
         $GLOBALS['cfg']['Server']['LogoutURL'] = 'https://example.com/logout';
 
         $this->doMockResponse(
-            0, 0, 0,
+            0,
+            0,
+            0,
             array('Location: https://example.com/logout')
         );
     }
@@ -136,7 +140,9 @@ class AuthenticationHttpTest extends \PMATestCase
         $GLOBALS['cfg']['Server']['verbose'] = 'verboseMessagê';
 
         $this->doMockResponse(
-            1, 1, 1,
+            1,
+            1,
+            1,
             array('WWW-Authenticate: Basic realm="phpMyAdmin verboseMessag"'),
             array('status: 401 Unauthorized'),
             401
@@ -149,7 +155,9 @@ class AuthenticationHttpTest extends \PMATestCase
         $GLOBALS['cfg']['Server']['host'] = 'hòst';
 
         $this->doMockResponse(
-            1, 1, 1,
+            1,
+            1,
+            1,
             array('WWW-Authenticate: Basic realm="phpMyAdmin hst"'),
             array('status: 401 Unauthorized'),
             401
@@ -162,7 +170,9 @@ class AuthenticationHttpTest extends \PMATestCase
         $GLOBALS['cfg']['Server']['auth_http_realm'] = 'rêäealmmessage';
 
         $this->doMockResponse(
-            1, 1, 1,
+            1,
+            1,
+            1,
             array('WWW-Authenticate: Basic realm="realmmessage"'),
             array('status: 401 Unauthorized'),
             401
@@ -184,8 +194,15 @@ class AuthenticationHttpTest extends \PMATestCase
      * @return void
      * @dataProvider authCheckProvider
      */
-    public function testAuthCheck($user, $pass, $userIndex, $passIndex,
-        $expectedReturn, $expectedUser, $expectedPass, $old_usr = ''
+    public function testAuthCheck(
+        $user,
+        $pass,
+        $userIndex,
+        $passIndex,
+        $expectedReturn,
+        $expectedUser,
+        $expectedPass,
+        $old_usr = ''
     ) {
         $GLOBALS['PHP_AUTH_USER'] = '';
         $GLOBALS['PHP_AUTH_PW'] = '';
@@ -321,7 +338,7 @@ class AuthenticationHttpTest extends \PMATestCase
             'foo' => 'bar'
         );
 
-        $GLOBALS['cfg']['Server']= array(
+        $GLOBALS['cfg']['Server'] = array(
             'host' => 'a',
             'user' => 'user2'
         );
@@ -354,7 +371,7 @@ class AuthenticationHttpTest extends \PMATestCase
             'foo' => 'bar'
         );
 
-        $GLOBALS['cfg']['Server']= array(
+        $GLOBALS['cfg']['Server'] = array(
             'host' => 'a',
             'user' => 'user2'
         );
