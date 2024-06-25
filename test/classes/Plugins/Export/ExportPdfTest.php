@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\Plugins\Export\ExportPdf class
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Plugins\Export;
 
 use PhpMyAdmin\Plugins\Export\ExportPdf;
@@ -295,7 +297,11 @@ class ExportPdfTest extends \PMATestCase
 
         $this->assertTrue(
             $this->object->exportData(
-                'db', 'table', "\n", "phpmyadmin.net/err", 'SELECT'
+                'db',
+                'table',
+                "\n",
+                "phpmyadmin.net/err",
+                'SELECT'
             )
         );
     }
@@ -311,7 +317,7 @@ class ExportPdfTest extends \PMATestCase
     {
         $setter = new ReflectionMethod('PhpMyAdmin\Plugins\Export\ExportPdf', '_setPdf');
         $setter->setAccessible(true);
-        $setter->invoke($this->object, new Pdf);
+        $setter->invoke($this->object, new Pdf());
 
         $getter = new ReflectionMethod('PhpMyAdmin\Plugins\Export\ExportPdf', '_getPdf');
         $getter->setAccessible(true);

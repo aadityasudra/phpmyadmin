@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\Plugins\Export\ExportHtmlword class
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Plugins\Export;
 
 use PhpMyAdmin\DatabaseInterface;
@@ -375,7 +377,11 @@ class ExportHtmlwordTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportData(
-                'testDB', 'testTable', "\n", 'example.com', 'test'
+                'testDB',
+                'testTable',
+                "\n",
+                'example.com',
+                'test'
             )
         );
         $result = htmlspecialchars_decode(ob_get_clean());
@@ -653,7 +659,7 @@ class ExportHtmlwordTest extends \PMATestCase
             $result
         );
 
-         // case 3
+        // case 3
 
         $dbi = $this->getMockBuilder('PhpMyAdmin\DatabaseInterface')
             ->disableOriginalConstructor()
@@ -810,7 +816,12 @@ class ExportHtmlwordTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 'tbl', "\n", "example.com", "create_table", "test"
+                'db',
+                'tbl',
+                "\n",
+                "example.com",
+                "create_table",
+                "test"
             )
         );
         $result = ob_get_clean();
@@ -823,7 +834,12 @@ class ExportHtmlwordTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 'tbl', "\n", "example.com", "triggers", "test"
+                'db',
+                'tbl',
+                "\n",
+                "example.com",
+                "triggers",
+                "test"
             )
         );
         $result = ob_get_clean();
@@ -836,7 +852,12 @@ class ExportHtmlwordTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 'tbl', "\n", "example.com", "create_view", "test"
+                'db',
+                'tbl',
+                "\n",
+                "example.com",
+                "create_view",
+                "test"
             )
         );
         $result = ob_get_clean();
@@ -849,7 +870,12 @@ class ExportHtmlwordTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 'tbl', "\n", "example.com", "stand_in", "test"
+                'db',
+                'tbl',
+                "\n",
+                "example.com",
+                "stand_in",
+                "test"
             )
         );
         $result = ob_get_clean();
@@ -868,7 +894,8 @@ class ExportHtmlwordTest extends \PMATestCase
     public function testFormatOneColumnDefinition()
     {
         $method = new ReflectionMethod(
-            'PhpMyAdmin\Plugins\Export\ExportHtmlword', 'formatOneColumnDefinition'
+            'PhpMyAdmin\Plugins\Export\ExportHtmlword',
+            'formatOneColumnDefinition'
         );
         $method->setAccessible(true);
 

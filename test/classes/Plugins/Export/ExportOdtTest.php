@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\Plugins\Export\ExportOdt class
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Plugins\Export;
 
 use PhpMyAdmin\DatabaseInterface;
@@ -414,20 +416,20 @@ class ExportOdtTest extends \PMATestCase
             ->getMock();
 
         $flags = array();
-        $a = new stdClass;
+        $a = new stdClass();
         $flags[] = $a;
 
-        $a = new stdClass;
+        $a = new stdClass();
         $a->blob = true;
         $flags[] = $a;
 
-        $a = new stdClass;
+        $a = new stdClass();
         $a->numeric = true;
         $a->type = 'real';
         $a->blob = false;
         $flags[] = $a;
 
-        $a = new stdClass;
+        $a = new stdClass();
         $a->type = "timestamp";
         $a->blob = false;
         $a->numeric = false;
@@ -478,7 +480,11 @@ class ExportOdtTest extends \PMATestCase
 
         $this->assertTrue(
             $this->object->exportData(
-                'db', 'ta<ble', "\n", "example.com", "SELECT"
+                'db',
+                'ta<ble',
+                "\n",
+                "example.com",
+                "SELECT"
             )
         );
 
@@ -554,7 +560,11 @@ class ExportOdtTest extends \PMATestCase
 
         $this->assertTrue(
             $this->object->exportData(
-                'db', 'table', "\n", "example.com", "SELECT"
+                'db',
+                'table',
+                "\n",
+                "example.com",
+                "SELECT"
             )
         );
 
@@ -609,7 +619,11 @@ class ExportOdtTest extends \PMATestCase
 
         $this->assertTrue(
             $this->object->exportData(
-                'db', 'table', "\n", "example.com", "SELECT"
+                'db',
+                'table',
+                "\n",
+                "example.com",
+                "SELECT"
             )
         );
 
@@ -866,11 +880,11 @@ class ExportOdtTest extends \PMATestCase
         );
     }
 
-     /**
-     * Test for PhpMyAdmin\Plugins\Export\ExportOdt::getTriggers
-     *
-     * @return void
-     */
+    /**
+    * Test for PhpMyAdmin\Plugins\Export\ExportOdt::getTriggers
+    *
+    * @return void
+    */
     public function testGetTriggers()
     {
         $dbi = $this->getMockBuilder('PhpMyAdmin\DatabaseInterface')
@@ -961,8 +975,16 @@ class ExportOdtTest extends \PMATestCase
         $this->object->expects($this->at(2))
             ->method('getTableDef')
             ->with(
-                'db', 't&bl', "\n", "example.com",
-                false, false, false, false, true, true
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                false,
+                false,
+                false,
+                false,
+                true,
+                true
             )
             ->will($this->returnValue('dumpText3'));
 
@@ -976,7 +998,12 @@ class ExportOdtTest extends \PMATestCase
         // case 1
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 't&bl', "\n", "example.com", "create_table", "test"
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                "create_table",
+                "test"
             )
         );
 
@@ -991,7 +1018,12 @@ class ExportOdtTest extends \PMATestCase
 
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 't&bl', "\n", "example.com", "triggers", "test"
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                "triggers",
+                "test"
             )
         );
 
@@ -1006,7 +1038,12 @@ class ExportOdtTest extends \PMATestCase
 
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 't&bl', "\n", "example.com", "create_view", "test"
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                "create_view",
+                "test"
             )
         );
 
@@ -1020,7 +1057,12 @@ class ExportOdtTest extends \PMATestCase
         $GLOBALS['odt_buffer'] = '';
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 't&bl', "\n", "example.com", "stand_in", "test"
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                "stand_in",
+                "test"
             )
         );
 
@@ -1039,7 +1081,8 @@ class ExportOdtTest extends \PMATestCase
     public function testFormatOneColumnDefinition()
     {
         $method = new ReflectionMethod(
-            'PhpMyAdmin\Plugins\Export\ExportOdt', 'formatOneColumnDefinition'
+            'PhpMyAdmin\Plugins\Export\ExportOdt',
+            'formatOneColumnDefinition'
         );
         $method->setAccessible(true);
 

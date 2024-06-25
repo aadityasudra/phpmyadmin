@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\Plugins\Export\ExportPhparray class
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Plugins\Export;
 
 use PhpMyAdmin\DatabaseInterface;
@@ -249,7 +251,11 @@ class ExportPhparrayTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportData(
-                'db', 'table', "\n", 'phpmyadmin.net/err', 'SELECT'
+                'db',
+                'table',
+                "\n",
+                'phpmyadmin.net/err',
+                'SELECT'
             )
         );
         $result = ob_get_clean();
@@ -287,7 +293,11 @@ class ExportPhparrayTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportData(
-                'db', '0`932table', "\n", 'phpmyadmin.net/err', 'SELECT'
+                'db',
+                '0`932table',
+                "\n",
+                'phpmyadmin.net/err',
+                'SELECT'
             )
         );
         $result = ob_get_clean();

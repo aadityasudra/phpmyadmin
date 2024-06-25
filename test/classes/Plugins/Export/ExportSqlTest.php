@@ -1,10 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * tests for PhpMyAdmin\Plugins\Export\ExportSql class
  *
  * @package PhpMyAdmin-test
  */
+
 namespace PhpMyAdmin\Tests\Plugins\Export;
 
 use PhpMyAdmin\DatabaseInterface;
@@ -862,7 +864,10 @@ class ExportSqlTest extends \PMATestCase
         $method = new ReflectionMethod('PhpMyAdmin\Plugins\Export\ExportSql', '_getTableDefForView');
         $method->setAccessible(true);
         $result = $method->invoke(
-            $this->object, 'db', 'view', "\n"
+            $this->object,
+            'db',
+            'view',
+            "\n"
         );
 
         $this->assertEquals(
@@ -900,7 +905,11 @@ class ExportSqlTest extends \PMATestCase
         $GLOBALS['dbi'] = $dbi;
 
         $result = $method->invoke(
-            $this->object, 'db', 'view', "\n", false
+            $this->object,
+            'db',
+            'view',
+            "\n",
+            false
         );
 
         $this->assertEquals(
@@ -1017,7 +1026,13 @@ class ExportSqlTest extends \PMATestCase
         $GLOBALS['cfg']['Server']['DisableIS'] = false;
 
         $result = $this->object->getTableDef(
-            'db', 'table', "\n", "example.com/err", true, true, false
+            'db',
+            'table',
+            "\n",
+            "example.com/err",
+            true,
+            true,
+            false
         );
 
         $this->assertContains(
@@ -1167,7 +1182,13 @@ class ExportSqlTest extends \PMATestCase
         $GLOBALS['cfg']['Server']['DisableIS'] = false;
 
         $result = $this->object->getTableDef(
-            'db', 'table', "\n", "example.com/err", true, true, false
+            'db',
+            'table',
+            "\n",
+            "example.com/err",
+            true,
+            true,
+            false
         );
 
         $this->assertContains(
@@ -1225,7 +1246,12 @@ class ExportSqlTest extends \PMATestCase
         $method = new ReflectionMethod('PhpMyAdmin\Plugins\Export\ExportSql', '_getTableComments');
         $method->setAccessible(true);
         $result = $method->invoke(
-            $this->object, 'db', '', "\n", true, true
+            $this->object,
+            'db',
+            '',
+            "\n",
+            true,
+            true
         );
 
         $this->assertContains(
@@ -1281,7 +1307,11 @@ class ExportSqlTest extends \PMATestCase
         $this->object->expects($this->at(1))
             ->method('getTableDef')
             ->with(
-                'db', 't&bl', "\n", "example.com", false
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                false
             )
             ->will($this->returnValue('dumpText3'));
 
@@ -1300,7 +1330,12 @@ class ExportSqlTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 't&bl', "\n", "example.com", "create_table", "test"
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                "create_table",
+                "test"
             )
         );
         $result = ob_get_clean();
@@ -1325,7 +1360,12 @@ class ExportSqlTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 't&bl', "\n", "example.com", "triggers", "test"
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                "triggers",
+                "test"
             )
         );
         $result = ob_get_clean();
@@ -1349,7 +1389,12 @@ class ExportSqlTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 't&bl', "\n", "example.com", "create_view", "test"
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                "create_view",
+                "test"
             )
         );
         $result = ob_get_clean();
@@ -1385,7 +1430,12 @@ class ExportSqlTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 't&bl', "\n", "example.com", "create_view", "test"
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                "create_view",
+                "test"
             )
         );
         $result = ob_get_clean();
@@ -1405,7 +1455,12 @@ class ExportSqlTest extends \PMATestCase
         ob_start();
         $this->assertTrue(
             $this->object->exportStructure(
-                'db', 't&bl', "\n", "example.com", "stand_in", "test"
+                'db',
+                't&bl',
+                "\n",
+                "example.com",
+                "stand_in",
+                "test"
             )
         );
         $result = ob_get_clean();
@@ -1429,7 +1484,7 @@ class ExportSqlTest extends \PMATestCase
             ->getMock();
 
         $flags = array();
-        $a = new stdClass;
+        $a = new stdClass();
         $a->blob = false;
         $a->numeric = true;
         $a->type = 'ts';
@@ -1437,7 +1492,7 @@ class ExportSqlTest extends \PMATestCase
         $a->length = 2;
         $flags[] = $a;
 
-        $a = new stdClass;
+        $a = new stdClass();
         $a->blob = false;
         $a->numeric = true;
         $a->type = 'ts';
@@ -1445,7 +1500,7 @@ class ExportSqlTest extends \PMATestCase
         $a->length = 2;
         $flags[] = $a;
 
-        $a = new stdClass;
+        $a = new stdClass();
         $a->blob = true;
         $a->numeric = false;
         $a->type = 'ts';
@@ -1453,7 +1508,7 @@ class ExportSqlTest extends \PMATestCase
         $a->length = 2;
         $flags[] = $a;
 
-        $a = new stdClass;
+        $a = new stdClass();
         $a->type = "bit";
         $a->blob = false;
         $a->numeric = false;
@@ -1461,7 +1516,7 @@ class ExportSqlTest extends \PMATestCase
         $a->length = 2;
         $flags[] = $a;
 
-        $a = new stdClass;
+        $a = new stdClass();
         $a->blob = false;
         $a->numeric = true;
         $a->type = 'timestamp';
@@ -1530,7 +1585,10 @@ class ExportSqlTest extends \PMATestCase
 
         ob_start();
         $this->object->exportData(
-            'db', 'table', "\n", "example.com/err",
+            'db',
+            'table',
+            "\n",
+            "example.com/err",
             "SELECT a FROM b WHERE 1"
         );
         $result = ob_get_clean();
@@ -1577,7 +1635,7 @@ class ExportSqlTest extends \PMATestCase
             ->getMock();
 
         $flags = array();
-        $a = new stdClass;
+        $a = new stdClass();
         $a->blob = false;
         $a->numeric = true;
         $a->type = 'real';
@@ -1588,7 +1646,7 @@ class ExportSqlTest extends \PMATestCase
         $a->primary_key = 1;
         $flags[] = $a;
 
-        $a = new stdClass;
+        $a = new stdClass();
         $a->blob = false;
         $a->numeric = true;
         $a->type = '';
@@ -1660,7 +1718,10 @@ class ExportSqlTest extends \PMATestCase
 
         ob_start();
         $this->object->exportData(
-            'db', 'table', "\n", "example.com/err",
+            'db',
+            'table',
+            "\n",
+            "example.com/err",
             "SELECT a FROM b WHERE 1"
         );
         $result = ob_get_clean();
@@ -1804,11 +1865,13 @@ class ExportSqlTest extends \PMATestCase
             " \" double NOT NULL DEFAULT '213'\n";
 
         $method = new ReflectionMethod(
-            'PhpMyAdmin\Plugins\Export\ExportSql', '_makeCreateTableMSSQLCompatible'
+            'PhpMyAdmin\Plugins\Export\ExportSql',
+            '_makeCreateTableMSSQLCompatible'
         );
         $method->setAccessible(true);
         $result = $method->invoke(
-            $this->object, $query
+            $this->object,
+            $query
         );
 
         $this->assertEquals(
@@ -1906,19 +1969,23 @@ class ExportSqlTest extends \PMATestCase
         );
 
         $this->assertEquals(
-            'f', $this->object->getAlias($aliases, 'bar')
+            'f',
+            $this->object->getAlias($aliases, 'bar')
         );
 
         $this->assertEquals(
-            'aliastest', $this->object->getAlias($aliases, 'a')
+            'aliastest',
+            $this->object->getAlias($aliases, 'a')
         );
 
         $this->assertEquals(
-            'pphymdain', $this->object->getAlias($aliases, 'pqr')
+            'pphymdain',
+            $this->object->getAlias($aliases, 'pqr')
         );
 
         $this->assertEquals(
-            '', $this->object->getAlias($aliases, 'abc')
+            '',
+            $this->object->getAlias($aliases, 'abc')
         );
     }
 
@@ -1963,7 +2030,10 @@ class ExportSqlTest extends \PMATestCase
             . ") ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE="
             . "latin1_general_ci COMMENT='List' AUTO_INCREMENT=5";
         $result = $this->object->replaceWithAliases(
-            $sql_query, $aliases, $db, $table
+            $sql_query,
+            $aliases,
+            $db,
+            $table
         );
 
         $this->assertEquals(
@@ -1999,7 +2069,10 @@ class ExportSqlTest extends \PMATestCase
             . "SET NEW.xy=1; "
             . "END IF; END";
         $result = $this->object->replaceWithAliases(
-            $sql_query, $aliases, $db, $table
+            $sql_query,
+            $aliases,
+            $db,
+            $table
         );
 
         $this->assertEquals(
